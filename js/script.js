@@ -4,7 +4,11 @@ let clicks = {};
 function updateClicks(menu) {
   let button = menu.id;
   clicks[button] = clicks[button] + 1 || 1;
-  console.log(clicks);
+  let reportClicks = () => {
+    const report = [button, clicks];
+    console.log(...report);
+  };
+  reportClicks();
 }
 
 const activities = {
@@ -68,7 +72,7 @@ function updateActivityList(event) {
   }
 
   let activitiesContainer = `<ul>`;
-  state.activities.forEach(function (activity, index) {
+  state.activities.forEach((activity, index) => {
     activitiesContainer += `<li key="${index}">${activity}</li>`;
   });
   activitiesContainer += `</ul>`;
