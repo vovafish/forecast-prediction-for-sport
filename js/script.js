@@ -2,16 +2,15 @@
 
 function updateClicks() {
   let clicks = {};
-  let button;
-  let reportClicks = (menu) => {
-    button = menu.id;
-    clicks[button] = clicks[button] + 1 || 1;
-    console.log(clicks, button);
+  let reportClicks = (item) => {
+    clicks[item] = clicks[item] + 1 || 1;
+    console.log(item, clicks);
   };
   return reportClicks;
 }
 
-const report = updateClicks();
+const reportActivities = updateClicks();
+const reportProducts = updateClicks();
 
 const activities = {
   teamIn: ["basketball", "hockey", "volleyball"],
@@ -135,7 +134,17 @@ document.querySelectorAll(".options div").forEach(function (el) {
     "click",
     function (event) {
       updateActivityList(event);
-      report(event.target);
+      reportActivities(event.target.id);
+    },
+    false
+  );
+});
+
+document.querySelectorAll(".product-image").forEach((el) => {
+  el.addEventListener(
+    "mouseenter",
+    function (event) {
+      reportProducts(event.target.nextElementSibling.textContent);
     },
     false
   );
