@@ -1,15 +1,17 @@
 "use strict";
-let clicks = {};
 
-function updateClicks(menu) {
-  let button = menu.id;
-  clicks[button] = clicks[button] + 1 || 1;
-  let reportClicks = () => {
-    const report = [button, clicks];
-    console.log(...report);
+function updateClicks() {
+  let clicks = {};
+  let button;
+  let reportClicks = (menu) => {
+    button = menu.id;
+    clicks[button] = clicks[button] + 1 || 1;
+    console.log(clicks, button);
   };
-  reportClicks();
+  return reportClicks;
 }
+
+const report = updateClicks();
 
 const activities = {
   teamIn: ["basketball", "hockey", "volleyball"],
@@ -133,7 +135,7 @@ document.querySelectorAll(".options div").forEach(function (el) {
     "click",
     function (event) {
       updateActivityList(event);
-      updateClicks(event.target);
+      report(event.target);
     },
     false
   );
