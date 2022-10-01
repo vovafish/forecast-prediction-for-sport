@@ -84,14 +84,22 @@ const listWidget = (function () {
       document.querySelector(".results").classList.add("open");
     },
     updateUIWorking: () => {
+      /* let count = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+      count.forEach((el) => {
+        setTimeout(() => {
+          document.querySelector(
+            ".conditions"
+          ).innerHTML = `<p class="animation">00:00.${el}</p>`;
+        }, 100 * el);
+      }); */
       for (let i = 0; i <= 9; i++) {
-        ((j) => {
-          setTimeout(() => {
-            document.querySelector(
-              ".conditions"
-            ).innerHTML = `<p class="animation">00:00.${j}</p>`;
-          }, 100 * j);
-        })(i);
+        //  ((j) => {
+        setTimeout(() => {
+          document.querySelector(
+            ".conditions"
+          ).innerHTML = `<p class="animation">00:00.${i}</p>`;
+        }, 100 * i);
+        //  })(i);
       }
     },
     updateUISuccess: (response) => {
